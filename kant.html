@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kant — Filosofia OS</title>
+<style>
+:root{
+  --bg:#0e1116;--panel:#161b22;--panel2:#1d2430;--text:#eef2f7;--muted:#9da7b5;
+  --accent:#d6a85f;--accent2:#7db7ff;--ok:#74d39a;--warn:#ffcf70;--line:#2c3440;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;line-height:1.65}
+a{color:var(--accent2);text-decoration:none}
+header{padding:64px 20px 42px;background:linear-gradient(180deg,#17130e 0%,var(--bg) 100%);border-bottom:1px solid var(--line)}
+.wrap{max-width:1080px;margin:auto}
+.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;font-weight:800}
+h1{font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.02;margin:.35rem 0 1rem}
+.lead{max-width:800px;color:#c9d1db;font-size:1.1rem}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.tag{border:1px solid var(--line);background:#141922;border-radius:999px;padding:6px 10px;font-size:.83rem;color:#cbd3dd}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:28px;max-width:1180px;margin:0 auto;padding:28px 20px 80px}
+nav{position:sticky;top:16px;align-self:start;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px}
+nav b{display:block;margin:5px 8px 10px;color:var(--accent)}
+nav a{display:block;color:#b9c3ce;padding:7px 8px;border-radius:8px;font-size:.9rem}
+nav a:hover{background:var(--panel2);color:#fff}
+main{min-width:0}
+section{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;margin-bottom:22px}
+h2{font-size:1.65rem;margin:0 0 12px} h3{margin-top:22px;color:#f4deb7}
+p{margin:.65rem 0}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}
+.flow div{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center;font-size:.9rem}
+.cardgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:15px}
+.card strong{color:#fff}
+.note{border-left:4px solid var(--accent);padding:10px 14px;background:#211d17;border-radius:0 10px 10px 0;margin:14px 0}
+.integration{border-left-color:var(--accent2);background:#151e29}
+.question{margin:10px 0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.question button{width:100%;background:var(--panel2);border:0;color:var(--text);padding:13px 15px;text-align:left;font-weight:700;cursor:pointer}
+.answer{display:none;padding:13px 15px;background:#12171e;color:#cbd3dd}
+.question.open .answer{display:block}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.93rem}
+th,td{border-bottom:1px solid var(--line);padding:10px;text-align:left;vertical-align:top}
+th{color:var(--accent)}
+.kat{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kat .card{font-size:.9rem}
+.quizbox{background:#11161d;border:1px solid var(--line);border-radius:14px;padding:18px}
+.choice{display:block;margin:8px 0;padding:10px 12px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;cursor:pointer}
+.choice:hover{border-color:#627083}
+.choice.good{border-color:var(--ok);background:#122319}
+.choice.bad{border-color:#e57b7b;background:#261617}
+button.primary{border:0;border-radius:10px;padding:10px 14px;background:var(--accent);color:#19130b;font-weight:800;cursor:pointer}
+.randomQ{font-size:1.08rem;padding:18px;background:var(--panel2);border-radius:12px;border:1px solid var(--line);min-height:86px}
+.small{color:var(--muted);font-size:.86rem}
+.progress{height:8px;background:#232a34;border-radius:99px;overflow:hidden;margin:9px 0 16px}
+.progress span{display:block;height:100%;background:var(--ok);width:0}
+ul{padding-left:22px}
+footer{color:var(--muted);text-align:center;padding:0 20px 50px}
+@media(max-width:860px){
+  .layout{display:block}.layout nav{position:relative;top:0;margin-bottom:20px}
+  nav{display:none}.flow{grid-template-columns:1fr 1fr}.cardgrid,.kat{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Filosofia OS · Interrogazione Kant</div>
+    <h1>Kant, come sistema.</h1>
+    <p class="lead">Una guida interattiva costruita per capire il movimento del ragionamento: dalla crisi della conoscenza alla rivoluzione copernicana, dal fenomeno ai limiti della metafisica, fino alla legge morale e ai postulati della Ragion pratica.</p>
+    <div class="tags">
+      <span class="tag">Appunti del prof = priorità</span>
+      <span class="tag">Libro = integrazione Ragion pura</span>
+      <span class="tag">Ragion pratica = appunti</span>
+      <span class="tag">Critica del giudizio esclusa</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+<nav>
+  <b>Mappa</b>
+  <a href="#mappa">0. Struttura</a>
+  <a href="#problema">1. Problema</a>
+  <a href="#giudizi">2. Giudizi</a>
+  <a href="#copernico">3. Rivoluzione</a>
+  <a href="#estetica">4. Estetica</a>
+  <a href="#analitica">5. Analitica</a>
+  <a href="#deduzione">6. Deduzione / Io penso</a>
+  <a href="#limite">7. Fenomeno / Noumeno</a>
+  <a href="#dialettica">8. Dialettica</a>
+  <a href="#morale">9. Ragion pratica</a>
+  <a href="#postulati">10. Postulati</a>
+  <a href="#quiz">11. Quiz</a>
+  <a href="#orale">12. Simulatore orale</a>
+</nav>
+
+<main>
+<section id="mappa">
+  <div class="eyebrow">La struttura da non perdere</div>
+  <h2>Kant non è un elenco: è una catena</h2>
+  <div class="flow">
+    <div>Hume mette in crisi la necessità</div>
+    <div>Giudizi sintetici a priori</div>
+    <div>Rivoluzione copernicana</div>
+    <div>Forme a priori del soggetto</div>
+    <div>Limite: fenomeno, non cosa in sé</div>
+  </div>
+  <div class="flow">
+    <div>Spazio + tempo</div>
+    <div>12 categorie</div>
+    <div>Io penso</div>
+    <div>Dialettica: anima, mondo, Dio</div>
+    <div>Ragion pratica: legge morale</div>
+  </div>
+  <div class="note"><strong>Domanda madre:</strong> come può la ragione produrre conoscenza universale e necessaria senza oltrepassare ciò che può legittimamente conoscere?</div>
+</section>
+
+<section id="problema">
+  <div class="eyebrow">Critica della ragion pura</div>
+  <h2>1. Il problema della conoscenza</h2>
+  <p>La domanda è <strong>“Che cosa posso sapere?”</strong>. Kant vuole determinare insieme la forza e il limite della ragione. Matematica e fisica possiedono conoscenze universali e necessarie; la metafisica pretende lo stesso statuto, ma deve ancora dimostrarlo.</p>
+  <div class="cardgrid">
+    <div class="card"><strong>Razionalismo</strong><br>Cerca universalità e necessità nella ragione, ma rischia di costruire sistemi senza controllo dell'esperienza.</div>
+    <div class="card"><strong>Empirismo / Hume</strong><br>Parte dall'esperienza, ma non ricava da essa la necessità. L'abitudine non equivale a legge necessaria.</div>
+  </div>
+  <p>Il punto più incisivo è la causalità: aver visto molte volte B dopo A non dimostra logicamente che A debba produrre B in ogni caso.</p>
+  <div class="question"><button>Domanda guida ▾ Perché Kant non può scegliere semplicemente l'empirismo?</button><div class="answer">Perché l'esperienza spiega il contenuto delle nostre conoscenze, ma non basta a fondare il carattere universale e necessario delle leggi scientifiche.</div></div>
+</section>
+
+<section id="giudizi">
+  <h2>2. I tre tipi di giudizio</h2>
+  <table>
+    <tr><th>Tipo</th><th>Che cosa fa</th><th>Valore</th><th>Esempio</th></tr>
+    <tr><td>Analitico a priori</td><td>Esplicita ciò che è già nel soggetto</td><td>Universale e necessario, ma non fecondo</td><td>“Tutti i corpi sono estesi”</td></tr>
+    <tr><td>Sintetico a posteriori</td><td>Aggiunge contenuto dall'esperienza</td><td>Fecondo, ma contingente</td><td>“Tutti i corpi sono pesanti”</td></tr>
+    <tr><td><strong>Sintetico a priori</strong></td><td>Aggiunge contenuto senza fondare la validità sull'esperienza</td><td><strong>Fecondo + universale + necessario</strong></td><td>7+5=12; principi matematici/fisici</td></tr>
+  </table>
+  <div class="note"><strong>Snodo dell'interrogazione:</strong> Kant non deve provare che i sintetici a priori esistano; matematica e fisica lo mostrano. Deve spiegare <em>come siano possibili</em>.</div>
+</section>
+
+<section id="copernico">
+  <h2>3. La rivoluzione copernicana</h2>
+  <p>Il soggetto non è un recipiente passivo. Il materiale viene dall'esperienza, ma può diventare un oggetto conosciuto soltanto attraverso forme che appartengono al soggetto.</p>
+  <div class="cardgrid">
+    <div class="card"><strong>Materia</strong><br>Il dato sensibile ricevuto dall'esperienza.</div>
+    <div class="card"><strong>Forma</strong><br>Il modo a priori con cui il soggetto organizza il dato.</div>
+  </div>
+  <p>La rivoluzione copernicana consiste nel rovesciare la prospettiva: non sono soltanto le nostre facoltà ad adeguarsi agli oggetti; gli oggetti <em>in quanto conosciuti</em> devono sottostare alle forme delle nostre facoltà.</p>
+  <div class="note integration"><strong>Chiarimento:</strong> questo non significa che Kant dica “la mente inventa il mondo”. Dice che conosciamo la realtà soltanto nella forma in cui può apparire a un soggetto umano.</div>
+  <div class="question"><button>Domanda guida ▾ Che cosa significa “trascendentale”?</button><div class="answer">Riguarda le condizioni a priori che rendono possibile la conoscenza degli oggetti. Non significa “oltre l'esperienza”: quello sarebbe “trascendente”.</div></div>
+</section>
+
+<section id="estetica">
+  <h2>4. Estetica trascendentale: spazio e tempo</h2>
+  <p>La sensibilità riceve dati, ma ogni dato ci appare già secondo due <strong>forme a priori</strong>: spazio e tempo.</p>
+  <div class="cardgrid">
+    <div class="card"><strong>Spazio</strong><br>Forma del senso esterno: posizione e coesistenza dei fenomeni esterni.</div>
+    <div class="card"><strong>Tempo</strong><br>Forma del senso interno: successione degli stati. Ha un primato perché ogni esperienza modifica comunque il nostro stato interno.</div>
+  </div>
+  <h3>Newton, Leibniz, Kant</h3>
+  <p><strong>Newton:</strong> spazio e tempo assoluti. <strong>Leibniz:</strong> relazioni tra cose ed eventi. <strong>Kant:</strong> forme soggettive a priori della sensibilità, condizioni necessarie perché qualcosa possa apparire.</p>
+  <h3>Perché la matematica funziona?</h3>
+  <p>La geometria si fonda sull'intuizione pura dello spazio; l'aritmetica è legata alla successione temporale. La matematica può valere per i fenomeni perché i fenomeni stessi possono apparirci soltanto nello spazio e nel tempo.</p>
+</section>
+
+<section id="analitica">
+  <h2>5. Analitica trascendentale: categorie</h2>
+  <p>La sensibilità fornisce il molteplice; l'intelletto lo unifica. Senza questa cooperazione non c'è conoscenza oggettiva.</p>
+  <div class="note">Formula utile: <strong>“intuizioni senza concetti = cieche; concetti senza intuizioni = vuoti.”</strong></div>
+  <div class="kat">
+    <div class="card"><strong>Quantità</strong><br>Unità · Pluralità · Totalità</div>
+    <div class="card"><strong>Qualità</strong><br>Realtà · Negazione · Limitazione</div>
+    <div class="card"><strong>Relazione</strong><br>Sostanza/accidente · Causa/effetto · Reciprocità</div>
+    <div class="card"><strong>Modalità</strong><br>Possibilità · Esistenza · Necessità (con i rispettivi opposti)</div>
+  </div>
+  <p>Le categorie sono <strong>concetti puri a priori dell'intelletto</strong>. In Kant non descrivono generi assoluti dell'essere: sono funzioni con cui il soggetto organizza l'esperienza.</p>
+</section>
+
+<section id="deduzione">
+  <h2>6. Deduzione trascendentale e Io penso</h2>
+  <h3>La domanda</h3>
+  <p>Se le categorie appartengono al soggetto, con quale diritto valgono per gli oggetti dell'esperienza?</p>
+  <p>La deduzione trascendentale ne giustifica l'uso: l'oggetto di esperienza, proprio perché è un <strong>fenomeno</strong>, deve poter essere organizzato secondo le forme che rendono possibile un'esperienza oggettiva.</p>
+  <h3>Io penso / appercezione trascendentale</h3>
+  <p>Le molte rappresentazioni devono poter appartenere a una sola coscienza. L'“Io penso” è la funzione unificante che deve poter accompagnare tutte le rappresentazioni.</p>
+  <p><strong>Non è l'anima come sostanza.</strong> Non è un oggetto psicologico. È la condizione dell'unità dell'esperienza.</p>
+  <h3>Schematismo</h3>
+  <p>Lo schema trascendentale media tra categorie pure e intuizioni sensibili. Il tempo svolge la funzione di terreno comune per l'applicazione concreta delle categorie.</p>
+  <div class="question"><button>Domanda guida ▾ In che senso l'intelletto è “legislatore della natura”?</button><div class="answer">Non crea gli eventi. Rende possibile una natura come insieme ordinato di fenomeni sottoposti a leggi, perché l'esperienza oggettiva deve passare attraverso forme universali dell'intelletto.</div></div>
+</section>
+
+<section id="limite">
+  <h2>7. Fenomeno e noumeno</h2>
+  <div class="cardgrid">
+    <div class="card"><strong>Fenomeno</strong><br>La realtà come può apparire a noi attraverso sensibilità e intelletto. È il campo della scienza.</div>
+    <div class="card"><strong>Noumeno / cosa in sé</strong><br>La realtà considerata indipendentemente dal nostro modo di conoscere. È pensabile come limite, non conoscibile scientificamente.</div>
+  </div>
+  <p>Il limite non porta allo scetticismo totale: Kant salva la validità della conoscenza proprio delimitandola al campo in cui le sue condizioni valgono.</p>
+</section>
+
+<section id="dialettica">
+  <h2>8. Dialettica trascendentale</h2>
+  <p>La ragione cerca spontaneamente l'<strong>incondizionato</strong>. L'errore nasce quando trasforma questa esigenza in pretesa di conoscere oggetti oltre l'esperienza.</p>
+  <div class="cardgrid">
+    <div class="card"><strong>Anima</strong><br>La psicologia razionale trasforma illegittimamente l'Io penso in una sostanza. Risultato: paralogismo.</div>
+    <div class="card"><strong>Mondo</strong><br>La cosmologia razionale tratta il mondo come totalità assoluta e cade nelle antinomie.</div>
+    <div class="card"><strong>Dio</strong><br>La teologia razionale pretende prove speculative che Kant critica.</div>
+    <div class="card"><strong>Immagine della colomba</strong><br>La ragione pensa di volare meglio senza la “resistenza” dell'esperienza, ma senza quel limite perde le condizioni stesse della conoscenza.</div>
+  </div>
+  <h3>Le quattro antinomie</h3>
+  <table>
+    <tr><th></th><th>Tesi</th><th>Antitesi</th></tr>
+    <tr><td>1</td><td>Mondo con inizio e limiti</td><td>Mondo senza inizio e infinito</td></tr>
+    <tr><td>2</td><td>Esistono parti semplici</td><td>Niente è semplice; divisibilità indefinita</td></tr>
+    <tr><td>3</td><td>Esiste causalità libera</td><td>Tutto segue necessità naturale</td></tr>
+    <tr><td>4</td><td>Esiste un essere necessario</td><td>Nessun essere necessario</td></tr>
+  </table>
+  <h3>Le prove di Dio</h3>
+  <p><strong>Ontologica:</strong> dal concetto di essere perfettissimo all'esistenza. Kant obietta che l'esistenza non è un predicato reale ricavabile dalla definizione.</p>
+  <p><strong>Cosmologica:</strong> dal mondo a una causa necessaria. Usa la causalità oltre il campo dell'esperienza e, per identificare il necessario con Dio, ricade nel problema ontologico.</p>
+  <p><strong>Fisico-teologica:</strong> dall'ordine del mondo a un ordinatore. Può suggerire un architetto, non dimostrare l'essere infinito e creatore della metafisica.</p>
+  <div class="note integration"><strong>Uso regolativo:</strong> le idee di ragione non costruiscono oggetti conoscibili, ma possono orientare la ricerca verso unità e completezza sistematica.</div>
+</section>
+
+<section id="morale">
+  <div class="eyebrow">Critica della ragion pratica · appunti</div>
+  <h2>9. La legge morale</h2>
+  <p>La domanda diventa <strong>“Che cosa devo fare?”</strong>. Kant cerca una legge morale universale e necessaria, non fondata su piacere, felicità o interessi contingenti.</p>
+  <p>La moralità autentica è legata al <strong>dovere</strong>. Non devo fare il bene semplicemente perché mi conviene o mi rende felice: devo agire per rispetto della legge morale.</p>
+  <div class="cardgrid">
+    <div class="card"><strong>Massima</strong><br>Principio soggettivo con cui decido di agire.</div>
+    <div class="card"><strong>Imperativo ipotetico</strong><br>“Se vuoi X, fai Y.” È condizionato da uno scopo.</div>
+    <div class="card"><strong>Imperativo categorico</strong><br>Comanda senza condizioni e pretende validità universale.</div>
+    <div class="card"><strong>Autonomia</strong><br>La ragione riconosce e dà a se stessa la legge morale; non è “fare ciò che mi pare”.</div>
+  </div>
+  <h3>Prima formulazione</h3>
+  <div class="note">Agisci in modo che la massima della tua azione possa valere come legge universale.</div>
+  <p>Test: se tutti agissero secondo la mia massima, potrei volere razionalmente quel mondo? Oppure la massima distruggerebbe le condizioni che sfrutta?</p>
+  <h3>Seconda formulazione</h3>
+  <div class="note">Tratta l'umanità, in te e negli altri, sempre anche come fine e mai soltanto come mezzo.</div>
+  <p>Il punto è la dignità della persona: nessun essere razionale può essere ridotto a semplice strumento dell'interesse altrui.</p>
+  <h3>Intenzione</h3>
+  <p>Non basta la correttezza esterna. Un'azione può essere conforme al dovere ma compiuta soltanto per paura o vantaggio. Il valore morale dipende dal principio per cui il soggetto agisce.</p>
+</section>
+
+<section id="postulati">
+  <h2>10. Libertà e postulati della Ragion pratica</h2>
+  <p>Il dovere implica responsabilità. La morale richiede quindi che il soggetto possa considerarsi libero: se fossimo soltanto ingranaggi necessari della natura, il comando morale perderebbe senso.</p>
+  <table>
+    <tr><th>Postulato</th><th>Funzione pratica</th></tr>
+    <tr><td><strong>Libertà</strong></td><td>Condizione della responsabilità e dell'imputazione morale.</td></tr>
+    <tr><td><strong>Immortalità dell'anima</strong></td><td>Rende pensabile un progresso indefinito verso la piena conformità alla legge morale.</td></tr>
+    <tr><td><strong>Dio</strong></td><td>Rende pensabile il sommo bene, cioè l'armonia finale tra virtù e felicità.</td></tr>
+  </table>
+  <div class="note"><strong>Non è una contraddizione:</strong> Ragion pura = non posso conoscere teoreticamente questi oggetti. Ragion pratica = alcune idee vengono postulate come condizioni del senso morale. <strong>Conoscere e postulare non sono la stessa cosa.</strong></div>
+</section>
+
+<section id="quiz">
+  <h2>11. Active recall — quiz rapido</h2>
+  <p class="small">Il punteggio resta salvato sul dispositivo.</p>
+  <div class="progress"><span id="bar"></span></div>
+  <div id="quiz" class="quizbox"></div>
+  <p><button class="primary" id="next">Nuova domanda</button> <span id="score" class="small"></span></p>
+</section>
+
+<section id="orale">
+  <h2>12. Simulatore orale</h2>
+  <p>Premi il pulsante, rispondi ad alta voce per 60-90 secondi, poi chiediti: ho dato <strong>problema → tesi → spiegazione → conseguenza</strong>?</p>
+  <div id="randomQ" class="randomQ">Clicca per estrarre una domanda.</div>
+  <p><button class="primary" id="pick">Estrai domanda</button></p>
+  <h3>Schema minimo di risposta</h3>
+  <ol>
+    <li><strong>Definisci il problema.</strong></li>
+    <li><strong>Dai la risposta di Kant.</strong></li>
+    <li><strong>Spiega perché la risposta serve.</strong></li>
+    <li><strong>Collegala al passaggio successivo.</strong></li>
+  </ol>
+</section>
+</main>
+</div>
+
+<footer>
+  Filosofia OS · Kant · Materiale fuso da appunti + pagine di libro fornite, con integrazioni didattiche esplicitate.
+</footer>
+
+<script>
+document.querySelectorAll('.question button').forEach(b=>{
+  b.addEventListener('click',()=>b.parentElement.classList.toggle('open'));
+});
+
+const qs = [
+ {q:"Perché l'esperienza da sola non basta a Kant?",a:["Perché non garantisce universalità e necessità","Perché non contiene sensazioni","Perché Kant rifiuta la fisica"],c:0},
+ {q:"Che cosa unisce un giudizio sintetico a priori?",a:["Necessità e sterilità","Fecondità, universalità e necessità","Solo esperienza e probabilità"],c:1},
+ {q:"Che cosa significa rivoluzione copernicana?",a:["Il soggetto organizza l'esperienza con forme a priori","La mente crea materialmente gli oggetti","Kant accetta la cosmologia di Copernico come metafisica"],c:0},
+ {q:"Spazio e tempo sono...",a:["Cose in sé","Concetti ricavati dall'abitudine","Forme a priori della sensibilità"],c:2},
+ {q:"Le categorie sono...",a:["Concetti puri dell'intelletto","Sensazioni elementari","Tre idee metafisiche"],c:0},
+ {q:"L'Io penso è...",a:["Una sostanza spirituale dimostrata","La funzione unificante dell'autocoscienza","Il noumeno personale"],c:1},
+ {q:"Il noumeno è conoscibile scientificamente?",a:["Sì, tramite la metafisica","No: funge da concetto-limite","Sì, tramite le categorie senza intuizioni"],c:1},
+ {q:"Che cosa mostrano le antinomie?",a:["La superiorità dell'empirismo","Che la ragione va in conflitto con se stessa quando pretende di conoscere la totalità oltre l'esperienza","Che la matematica è falsa"],c:1},
+ {q:"Un imperativo ipotetico vale...",a:["Senza condizioni","Solo in relazione a uno scopo","Come legge morale assoluta"],c:1},
+ {q:"Autonomia morale significa...",a:["Fare ciò che si desidera","Obbedire a una legge razionale che il soggetto riconosce come universale","Seguire un'autorità esterna"],c:1},
+ {q:"Perché la libertà è postulata nella Ragion pratica?",a:["Per spiegare la geometria","Perché dovere e responsabilità richiedono che l'azione sia imputabile al soggetto","Per dimostrare Dio"],c:1},
+ {q:"Ragion pura e pratica si contraddicono sui postulati?",a:["Sì","No: distinguono conoscenza teoretica e necessità pratica","Solo riguardo Dio"],c:1}
+];
+let scoreData = JSON.parse(localStorage.getItem('kantScore')||'{"ok":0,"tot":0}');
+let current;
+
+function renderScore(){
+  document.getElementById('score').textContent = 'Corrette: '+scoreData.ok+'/'+scoreData.tot;
+  const pct = scoreData.tot ? Math.round(scoreData.ok/scoreData.tot*100) : 0;
+  document.getElementById('bar').style.width = pct+"%";
+}
+function newQ(){
+  current = qs[Math.floor(Math.random()*qs.length)];
+  const box=document.getElementById('quiz');
+  box.innerHTML='<strong>'+current.q+'</strong><div>'+current.a.map((x,i)=>'<div class="choice" data-i="'+i+'">'+x+'</div>').join('')+'</div>';
+  box.querySelectorAll('.choice').forEach(el=>{
+    el.onclick=()=>{
+      if(box.dataset.done==="1")return;
+      box.dataset.done="1";
+      const i=+el.dataset.i;
+      scoreData.tot++;
+      if(i===current.c){scoreData.ok++;el.classList.add('good')}
+      else{el.classList.add('bad');box.querySelector('[data-i="'+current.c+'"]').classList.add('good')}
+      localStorage.setItem('kantScore',JSON.stringify(scoreData));
+      renderScore();
+    }
+  });
+  box.dataset.done="0";
+}
+document.getElementById('next').onclick=newQ;
+renderScore(); newQ();
+
+const oral = [
+ "Perché Hume è decisivo per il problema di Kant?",
+ "Spiega i tre tipi di giudizio e perché il sintetico a priori è centrale.",
+ "Ricostruisci la rivoluzione copernicana senza usare la frase imparata a memoria.",
+ "Perché spazio e tempo rendono possibile la matematica?",
+ "Spiega il rapporto tra sensibilità e intelletto.",
+ "Che cosa sono le categorie e perché non sono le categorie di Aristotele?",
+ "Che problema risolve la deduzione trascendentale?",
+ "Che cos'è l'Io penso e perché non è l'anima?",
+ "Fenomeno e noumeno: che cosa possiamo e non possiamo conoscere?",
+ "Perché nasce l'illusione trascendentale?",
+ "Spiega una antinomia e ciò che dimostra sul limite della ragione.",
+ "Perché Kant critica la prova ontologica di Dio?",
+ "Confronta prova cosmologica e fisico-teologica.",
+ "Perché la felicità non può fondare la morale?",
+ "Massima, imperativo ipotetico e imperativo categorico.",
+ "Spiega il test di universalizzazione con un esempio.",
+ "Che cosa significa trattare una persona come fine?",
+ "Autonomia ed eteronomia: qual è la differenza?",
+ "Perché l'intenzione conta nel valore morale?",
+ "Come si passa dal limite della Ragion pura ai postulati della Ragion pratica?"
+];
+document.getElementById('pick').onclick=()=>{
+ document.getElementById('randomQ').textContent=oral[Math.floor(Math.random()*oral.length)];
+};
+</script>
+</body>
+</html>
